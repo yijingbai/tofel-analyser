@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tofel_analyser',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,3 +87,16 @@ print BASE_DIR
 TEMPLATE_DIRS = (
     BASE_DIR+'/tofel_analyser/templates',
 )
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer'
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+
+}
+
+
