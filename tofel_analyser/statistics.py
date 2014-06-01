@@ -14,3 +14,6 @@ class Statistics(object):
         grades = Grade.objects.all().order_by('-createtime')
         return grades
 
+    def getGradeByType(type):
+        grades = Grade.objects.filter(qtype=type)
+        return grades
