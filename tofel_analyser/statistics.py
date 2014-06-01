@@ -17,3 +17,8 @@ class Statistics(object):
     def getGradeByType(type):
         grades = Grade.objects.filter(qtype=type)
         return grades
+
+    def getGradeByTime(startTime, endTime):
+        grades = Grade.objects.filter(createtime__gt=startTime, createtime__lt=endTime)
+        return grades 
+
