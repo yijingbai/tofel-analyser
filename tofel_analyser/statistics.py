@@ -7,36 +7,36 @@ class Statistics(object):
     def __init__(self):
         super(Statistics, self).__init__()
 
-    def addGrade(self, grade):
+    def addQuestion(self, question):
         """
         add Tofel wrong question
         """
-        tofelgrade = Grade(**grade)
-        tofelgrade.save()
+        tofelQuestion = Question(**question)
+        tofelQuestion.save()
 
-    def getGradeTimeLine(self, startTime=None, endTime=None):
+    def getQuestionTimeLine(self, startTime=None, endTime=None):
         if startTime is None or endTime is None:
-            grades = Grade.objects.all().order_by('createtime')
-            return grades
-        grades = Grade.objects.filter(createtime__gt=startTime, createtime_lt=endTime).order_by('createtime')    
-        return grades
+            Questions = Question.objects.all().order_by('createtime')
+            return Questions
+        Questions = Question.objects.filter(createtime__gt=startTime, createtime_lt=endTime).order_by('createtime')    
+        return Questions
 
-    def getGradeByType(self, type, startTime=None, endTime=None):
+    def getQuestionByType(self, type, startTime=None, endTime=None):
         if startTime is None or endTime is None:
-            grades = Grade.objects.filter(qtype=type)
-            return grades
-        grades = Grade.objects.filter(qtype=type, createtime__gt=startTime, createtime_lt=endTime)
-        return grades
+            Questions = Question.objects.filter(qtype=type)
+            return Questions
+        Questions = Question.objects.filter(qtype=type, createtime__gt=startTime, createtime_lt=endTime)
+        return Questions
 
-    def getGradeByQfromList(self, fromlist):
-        grades = Grade.objects.filter(qfrom__in=fromlist)
-        return grades
+    def getQuestionByQfromList(self, fromlist):
+        Questions = Question.objects.filter(qfrom__in=fromlist)
+        return Questions
 
-    def getGradeByQfromRange(self, startFrom, endFrom):
+    def getQuestionByQfromRange(self, startFrom, endFrom):
         fromlist = []
         for i in range(startFrom, endFrom + 1):
             fromlist.append('tpo' + i)
-        grades = getGradeByQfromList(fromlist)
-        return grades
+        Questions = getQuestionByQfromList(fromlist)
+        return Questions
 
     
