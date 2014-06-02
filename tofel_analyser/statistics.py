@@ -1,6 +1,7 @@
 #encoding:utf-8
 from models import *
 
+
 class Statistics(object):
     """Tofel Grade Statistics"""
     def __init__(self):
@@ -15,10 +16,10 @@ class Statistics(object):
         return grades
 
     def getGradeByType(type):
-        grades = Grade.objects.filter(qtype=type)
+        grades = Grade.objects.filter(qtype=type, createtime__gt=startTime, createtime_lt=endTime)
         return grades
 
     def getGradeByTime(startTime, endTime):
         grades = Grade.objects.filter(createtime__gt=startTime, createtime__lt=endTime)
-        return grades 
+        return grades
 
