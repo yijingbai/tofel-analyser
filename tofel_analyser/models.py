@@ -1,8 +1,8 @@
 from django.db import models
 
-class Grade(models.Model):
+class Question(models.Model):
     """
-        Grade Model to record the grade.
+        Question Model to record the grade.
     """
     qfrom = models.CharField(max_length=1000)
     qnumber = models.IntegerField()
@@ -12,7 +12,7 @@ class Grade(models.Model):
 
     def __unicode__(self):
         return u"""
-            Grade {}:
+            Question {}:
                 qfrom: {}
                 qnumber: {}
                 qtype: {}

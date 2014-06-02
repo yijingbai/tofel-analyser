@@ -8,6 +8,9 @@ class Statistics(object):
         super(Statistics, self).__init__()
 
     def addGrade(self, grade):
+        """
+        add Tofel wrong question
+        """
         tofelgrade = Grade(**grade)
         tofelgrade.save()
 
