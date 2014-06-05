@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'tofel.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', include(tofel_analyser.urls)),
     url(r'^admin/', include(admin.site.urls)),
 )
