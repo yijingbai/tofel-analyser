@@ -101,8 +101,8 @@ class Instances(APIView):
         return Response(returnSuccess(ser.data))
 
 
-class ViewSet(viewsets.ModelViewSet):
-    queryset = meta_definition.objects.all()
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
     serializer_class = MetaDefinitionSerializer
 
 
