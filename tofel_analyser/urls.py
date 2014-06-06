@@ -4,7 +4,7 @@ from apiview import *
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'metas', MetaViewSet)
+router.register(r'questions', QuestionViewSet)
 
 urlpatterns = patterns('views',
     url(r'^api/method$', Method.as_view()),
