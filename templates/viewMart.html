@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block css_include %}
+<link href="/static/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+<link href="/static/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/static/assets/css/knowledge.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/static/assets/plugins/highlight/styles/atelier-forest.light.css" rel="stylesheet" type="text/css" media="screen"/>
+{% endblock %}
+
+
+{% block pagecontent %}
+<div id="portlet-config" class="modal hide">
+  <div class="modal-header">
+    <button data-dismiss="modal" class="close" type="button"></button>
+    <h3>Widget Settings</h3>
+  </div>
+  <div class="modal-body"></div>
+</div>
+<div class="clearfix"></div>
+<div class="content">
+
+</div>
+{% endblock %}
+
+{% block js_include %}
+<script src="/static/assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/static/assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+<script src="/static/assets/js/util.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+<script src="/static/assets/plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/highlight/highlight.pack.js" type="text/javascript"></script>
+<script src="/static/assets/js/viewMart.js" type="text/javascript"></script>
+<script type="text/template" id="item-meta">
+<td><%= cname %></td>
+<td><%= ename %></td>
+<td><%= type %></td>
+<td><%= desc %></td>
+<td><%= rule %></td>
+<td><%= meaning %></td>
+<td><%= legal %></td>
+<td><%= testrule %></td>
+</script>
+<script type="text/template" id="item-mart">
+ <div class="col-md-12">
+      <div class="grid simple">
+        <div class="grid-title no-border">
+          <h4 style="padding-bottom: 3px;">
+            <span class="semi-bold"><%= ename %> - <%= cname %></span>
+            <% _.each(tags, function(t) {;%> <span class="label label-success  m-l-5"><%= t %></span> <%});%></h4>
+
+          <div class="tools">
+            接口人:<span class="semi-bold"><%= manager %></span>
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="remove"></a>
+          </div>
+        </div>
+        <div class="grid-body no-border">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4">
+                描述:<span class="semi-bold"><%= desc %></span>
+                </div>
+                <div class="col-md-4">
+                创建时间:<span class="semi-bold"><%= updatetime %></span>
+                </div>
+
+                <div class="col-md-4">
+                更新频率:<span class="semi-bold"><%= frequency %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-t-10">
+            <pre><code><%= code %></code></pre>
+          </div>
+        </div>
+        <div class="grid-body no-border grid-foot">
+           <div class="panel-group" id="accordion" data-toggle="collapse">
+                <div class="panel panel-default">
+                  <div class="panel-heading collapsed">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="tabs_accordian.html#collapse<%= id %>">字段列表</a>
+                    </h4>
+                  </div>
+                  <div id="collapse<%= id %>" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                      <table class="table" id="example3" >
+                        <thead>
+                          <tr>
+                            <th>字段中文名</th>
+                            <th>字段英文名</th>
+                            <th>数据类型</th>
+                            <th>描述</th>
+                            <th>计算规则</th>
+                            <th>取值含义</th>
+                            <th>合法性说明</th>
+                            <th>测试规则</th>
+                          </tr>
+                        </thead>
+                        <tbody id="metacontent<%= id %>" >
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+          </div>
+        
+      </div>
+    </div>
+</script>
+<script></script>
+{% endblock %}

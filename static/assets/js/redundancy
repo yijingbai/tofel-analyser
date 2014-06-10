@@ -1,0 +1,33 @@
+$(function() {
+
+    var reduceresultDataTable;
+
+    $('#redundancyform').submit(
+        formSubmitGenerator('#redundancyform', "#PageOpenTimer", '/api/startredundancy', '#reduceresult', 'Reduce结果为空', 1, 'data')
+    );
+
+    // $("#start").click(function() {
+    //     console.log('click');
+    //     input =
+    //         submitData('post', '/api/startredundancy', {
+    //             'input':
+    //         })
+    // })
+
+    $.getJSON("/api/Redundancys/", function(msg) {
+        Morris.Area({
+            element: 'area-example',
+            data: msg.data,
+            xkey: 'occurTime',
+            ykeys: ['afterSize', 'beforeSize'],
+            labels: ['去冗余后行数', '去冗余前行数'],
+            lineColors: ['#0090d9', '#b7c1c5'],
+            lineWidth: '0',
+            grid: 'false',
+            fillOpacity: '0.5'
+        });
+    })
+
+
+
+})

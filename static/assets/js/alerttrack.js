@@ -1,0 +1,58 @@
+$(function() {
+
+    function fileFormatResult(file) {
+        return file.path + file.name;
+    }
+
+    function fileFormatSelection(file, container) {
+        return file.name;
+    }
+    $('#judgeinput').select2({
+        placeholder: "请选择一个输入文件",
+        id: function(object) {
+            return object.name;
+        },
+        ajax: {
+            url: "/api/getResultFileByType/correlation",
+            dataType: "json",
+            data: function(term, page) {
+                return {
+                    q: term
+                };
+            },
+            results: function(data, page) {
+                return {
+                    results: data.data
+                };
+            }
+        },
+        formatResult: fileFormatResult,
+        formatSelection: fileFormatSelection
+    });
+
+    $('#startTimePicker').datetimepicker({
+
+    });
+
+    $("#judgeform").submit(
+        formSubmitGenerator('#judgeform', "#PageOpenTimer", '/api/startAlertJudge', '#reduceresult', 'Reduce结果为空', 2, 'data', 'reduce', function(msg) {
+            console.log(msg);
+
+            $("#resultdiv").attr('style', 'display:""');
+            var imgtpl = _.template('<img id = "resultimg" \
+	          style = " max-width: 100%; \
+	max-height: 100%;" \
+	          src = "<%= imghref %>" >');
+
+            $("#imgdiv").html("");
+
+            window.setTimeout(function() {
+                $("#imgdiv").append(imgtpl({
+                    "imghref": msg.data.graph
+                }));
+            }, 500);
+
+
+
+        }));
+});

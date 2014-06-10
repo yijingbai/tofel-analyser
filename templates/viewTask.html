@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block css_include %}
+<link href="/static/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+<link href="/static/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/static/assets/css/knowledge.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/static/assets/plugins/highlight/styles/atelier-forest.light.css" rel="stylesheet" type="text/css" media="screen"/>
+{% endblock %}
+
+
+{% block pagecontent %}
+<div id="portlet-config" class="modal hide">
+  <div class="modal-header">
+    <button data-dismiss="modal" class="close" type="button"></button>
+    <h3>Widget Settings</h3>
+  </div>
+  <div class="modal-body"></div>
+</div>
+<div class="clearfix"></div>
+<div class="content">
+
+</div>
+{% endblock %}
+
+{% block js_include %}
+<script src="/static/assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/static/assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+<script src="/static/assets/js/util.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+<script src="/static/assets/plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="/static/assets/plugins/highlight/highlight.pack.js" type="text/javascript"></script>
+<script src="/static/assets/js/viewTask.js" type="text/javascript"></script>
+
+<script type="text/template" id="item-task">
+ <div class="col-md-12">
+      <div class="grid simple">
+        <div class="grid-title no-border">
+          <h4 style="padding-bottom: 3px;">
+            <span class="semi-bold"><%= ename %> - <%= cname %></span>
+            <% _.each(tags, function(t) {;%> <span class="label label-success  m-l-5"><%= t %></span> <%});%></h4>
+
+          <div class="tools">
+            接口人:<span class="semi-bold"><%= creator %></span>
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="remove"></a>
+          </div>
+        </div>
+        <div class="grid-body no-border">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4">
+                描述:<span class="semi-bold"><%= desc %></span>
+                </div>
+                <div class="col-md-4">
+                创建时间:<span class="semi-bold"><%= updatetime %></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 m-t-10">
+                运行周期:<span class="semi-bold"><%= cron %></span>
+                </div>
+                <div class="col-md-4 m-t-10">
+                代码类型:<span class="semi-bold"><%= codetype %></span>
+                </div>
+                <div class="col-md-4 m-t-10">
+                运行参数:<span class="semi-bold"><%= param %></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <form id="startTask<%= id %>">
+                <input type="hidden" name="id" value="<%= id %>">
+                <input type="hidden" name="optype" value="start">
+                <button type="submit" class="btn btn-success btn-cons">启动任务</button>
+              </form>
+              <a href="/viewinstances/<%= id %>" class="btn btn-primary btn-cons">查看运行实例</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="grid-body no-border grid-foot">
+           <div class="panel-group" id="accordion" data-toggle="collapse">
+                <div class="panel panel-default">
+                  <div class="panel-heading collapsed">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="tabs_accordian.html#collapse<%= id %>">任务代码</a>
+                    </h4>
+                  </div>
+                  <div id="collapse<%= id %>" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                      <pre><code><%= code %></code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading collapsed">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="tabs_accordian.html#collapseTwo<%= id %>">任务字段元信息</a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo<%= id %>" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                      <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="table-column-info">
+                        <thead>
+                          <tr role="row">
+                            <th>英文名</th>
+                            <th>中文名</th>
+                            <th>描述</th>
+                            <th>数据类型</th>
+                            <th>计算规则</th>
+                            <th>取值含义</th>
+                            <th>合法性说明</th>
+                            <th>测试规则</th>
+                            <th>操作</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        
+      </div>
+    </div>
+</script>
+<script></script>
+{% endblock %}
