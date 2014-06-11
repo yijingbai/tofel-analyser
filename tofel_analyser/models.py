@@ -5,11 +5,12 @@ class Article(models.Model):
     """
     Article Model
     """
-    afrom = models.CharField(max_length=1000)
-    anumber = models.CharField(max_length=1000)
-    atype = models.CharField(max_length=1000)
-    argument = models.CharField(max_length=1000)
-    duration = models.TimeField()
+    atitle = models.CharField(max_length=1000, blank=True)
+    afrom = models.CharField(max_length=1000, blank=True)
+    anumber = models.CharField(max_length=1000, blank=True)
+    atype = models.CharField(max_length=1000, blank=True)
+    argument = models.CharField(max_length=1000, blank=True)
+    duration = models.TimeField(blank=True)
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     def __unicode__(self):
@@ -29,9 +30,9 @@ class paragraph(models.Model):
     """
     paragraph Model
     """
-    pnumber = models.CharField(max_length=1000)
-    usage = models.CharField(max_length=1000)
-    createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
+    pnumber = models.CharField(max_length=1000, blank=True)
+    usage = models.CharField(max_length=1000, blank=True)
+    createtime = models.DateTimeField(auto_now=True, auto_now_add=True, blank=True)
     article = models.ForeignKey(Article, related_name="paras")
 
     def __unicode__(self):
@@ -48,10 +49,10 @@ class Question(models.Model):
     """
         Question Model to record the grade.
     """
-    qfrom = models.CharField(max_length=1000)
-    qnumber = models.IntegerField()
-    qtype = models.CharField(max_length=1000)
-    grade = models.IntegerField()
+    qfrom = models.CharField(max_length=1000, blank=True)
+    qnumber = models.IntegerField(blank=True)
+    qtype = models.CharField(max_length=1000, blank=True)
+    grade = models.IntegerField(blank=True)
     article = models.ForeignKey(Article, related_name="questions")
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
@@ -70,10 +71,10 @@ class Option(models.Model):
     """
         Option of question
     """
-    order = models.CharField(max_length=1000)
-    type = models.CharField(max_length=1000)
-    content = models.CharField(max_length=1000)
-    note = models.CharField(max_length=1000)
+    order = models.CharField(max_length=1000, blank=True)
+    type = models.CharField(max_length=1000, blank=True)
+    content = models.CharField(max_length=1000, blank=True)
+    note = models.CharField(max_length=1000, blank=True)
     question = models.ForeignKey(Question, related_name="options")
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
