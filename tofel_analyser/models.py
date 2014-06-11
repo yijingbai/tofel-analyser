@@ -8,6 +8,16 @@ class Article(models.Model):
     afrom = models.CharField(max_length=1000)
     anumber = models.CharField(max_length=1000)
     atype = models.CharField(max_length=1000)
+    argument = models.CharField(max_length=1000)
+
+
+class paragraph(models.Model):
+    """
+    paragraph Model
+    """
+    pnumber = models.CharField(max_length=1000)
+    usage = models.CharField(max_length=1000)
+    
 
 
 
