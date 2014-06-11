@@ -12,6 +12,18 @@ class Article(models.Model):
     duration = models.TimeField()
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
+    def __unicode__(self):
+        return u"""
+            Article {}:
+                afrom: {}
+                anumber: {}
+                atype: {}
+                argument: {}
+                duration: {}
+                createtime: {}
+        """.foramt(self.id, self.afrom, self.anumber, self.atype,
+            self.argument, self.duration, self.createtime)
+
 
 class paragraph(models.Model):
     """
@@ -21,6 +33,15 @@ class paragraph(models.Model):
     usage = models.CharField(max_length=1000)
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
     article = models.ForeignKey(Article, related_name="paras")
+
+    def __unicode__(self):
+        return u"""
+            Paragraph {}:
+                pnumber: {}
+                usage: {}
+                createtime: {}
+                article: {}
+        """.format(self.id, self.pnumber, self.createtime, self.article)
 
 
 class Question(models.Model):
@@ -55,5 +76,17 @@ class Option(models.Model):
     note = models.CharField(max_length=1000)
     question = models.ForeignKey(Question, related_name="options")
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
+
+    def __unicode__(self):
+        return u"""
+            Option {}:
+                order: {}
+                type: {}
+                content: {}
+                note: {}
+                question: {}
+                createtime: {}
+        """.format(self.id, self.order, self.type, self.content,
+            self.note, self.question, self.createtime)
 
 
