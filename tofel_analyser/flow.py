@@ -1,4 +1,7 @@
 #encoding:utf-8
+import datetime
+from models import *
+
 
 class SummaryFlow(object):
     """
@@ -7,5 +10,23 @@ class SummaryFlow(object):
 
     def __init__(self):
         super(SummaryFlow, self).__init__()
+        self.startReadingTime = {}
 
-    def addArticle(self, name):
+    def addArticle(self, articlearg):
+        """
+        Add a new article to read.
+        """
+        a = Article(**articlearg)
+        a.save()
+        return a
+
+    def startReading(self, article):
+        """
+        Start reading an article.
+        """
+        self.startReadingTime[article.id] = datetime.datetime.now()
+
+
+
+
+
