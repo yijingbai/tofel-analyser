@@ -20,6 +20,7 @@ class paragraph(models.Model):
     pnumber = models.CharField(max_length=1000)
     usage = models.CharField(max_length=1000)
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
+    article = models.ForeignKey(Article, related_name="paras")
 
 
 class Question(models.Model):
