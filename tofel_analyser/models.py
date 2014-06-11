@@ -1,5 +1,16 @@
 from django.db import models
 
+
+class Article(models.Model):
+    """
+    Article Model
+    """
+    afrom = models.CharField(max_length=1000)
+    anumber = models.CharField(max_length=1000)
+    atype = models.CharField(max_length=1000)
+
+
+
 class Question(models.Model):
     """
         Question Model to record the grade.
@@ -8,6 +19,7 @@ class Question(models.Model):
     qnumber = models.IntegerField()
     qtype = models.CharField(max_length=1000)
     grade = models.IntegerField()
+    article = models.ForeignKey(Article, related_name="questions")
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     def __unicode__(self):
