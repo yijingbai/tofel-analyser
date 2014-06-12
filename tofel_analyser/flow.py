@@ -26,6 +26,13 @@ class SummaryFlow(object):
         """
         self.startReadingTime[article.id] = datetime.datetime.now()
 
+    def endReading(self, article):
+        """
+        End reading an article.
+        """
+        self.startReadingTime[article.id] = datetime.datetime.now()
+
+
 
 
 
