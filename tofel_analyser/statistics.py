@@ -26,7 +26,7 @@ class Statistics(object):
 
     def getQuestionByType(self, type, startTime=None, endTime=None):
         """
-        Get Question By Type.
+        # TODO
         """
         if startTime is None or endTime is None:
             Questions = Question.objects.filter(qtype=type)
@@ -35,10 +35,16 @@ class Statistics(object):
         return Questions
 
     def getQuestionByQfromList(self, fromlist):
+        """
+        # TODO
+        """
         Questions = Question.objects.filter(qfrom__in=fromlist)
         return Questions
 
     def getQuestionByQfromRange(self, startFrom, endFrom):
+        """
+        # TODO
+        """
         fromlist = []
         for i in range(startFrom, endFrom + 1):
             fromlist.append('tpo' + i)
