@@ -25,6 +25,9 @@ class Statistics(object):
         return Questions
 
     def getQuestionByType(self, type, startTime=None, endTime=None):
+        """
+        Get Question By Type.
+        """
         if startTime is None or endTime is None:
             Questions = Question.objects.filter(qtype=type)
             return Questions
