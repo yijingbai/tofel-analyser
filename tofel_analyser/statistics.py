@@ -15,6 +15,9 @@ class Statistics(object):
         tofelQuestion.save()
 
     def getQuestionTimeLine(self, startTime=None, endTime=None):
+        """
+        添加时间轴
+        """
         if startTime is None or endTime is None:
             Questions = Question.objects.all().order_by('createtime')
             return Questions
