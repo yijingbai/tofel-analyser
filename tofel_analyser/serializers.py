@@ -10,8 +10,14 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'qfrom', 'qnumber', 'qtype', 'grade', 'createtime')
 
 
-class Article(serializers.HyperlinkedModelSerializer):
+class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'atitle', 'afrom', 'anumber', 'atype','argument','duration','user','createtime')
+        depth = 1
 
+
+class ParagraphSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = paragraph
+        fields = ('id', 'pnumber', 'usage', 'createtime', 'article')
