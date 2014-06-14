@@ -11,13 +11,15 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
+    paras = serializers.HyperlinkedRelatedField(many=True)
     class Meta:
         model = Article
-        fields = ('id', 'atitle', 'afrom', 'anumber', 'atype','argument','duration','user','createtime')
+        fields = ('id', 'atitle', 'afrom', 'anumber', 'atype','argument','duration','user','createtime', 'paras')
         depth = 1
 
 
 class ParagraphSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = paragraph
         fields = ('id', 'pnumber', 'usage', 'createtime', 'article')

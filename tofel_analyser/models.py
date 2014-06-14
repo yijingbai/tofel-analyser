@@ -10,7 +10,7 @@ class Article(models.Model):
     anumber = models.CharField(max_length=1000, blank=True)
     atype = models.CharField(max_length=1000, blank=True)
     argument = models.CharField(max_length=1000, blank=True)
-    duration = models.TimeField(blank=True)
+    duration = models.TimeField(blank=True, null=True)
     user = models.CharField(max_length=1000, blank=True, null=True)
     createtime = models.DateTimeField(auto_now=True, auto_now_add=True)
 
@@ -43,7 +43,7 @@ class paragraph(models.Model):
                 usage: {}
                 createtime: {}
                 article: {}
-        """.format(self.id, self.pnumber, self.createtime, self.article)
+        """.format(self.id, self.pnumber, self.usage, self.createtime, self.article)
 
 
 class Question(models.Model):
