@@ -23,7 +23,7 @@ class Article(models.Model):
                 argument: {}
                 duration: {}
                 createtime: {}
-        """.foramt(self.id, self.afrom, self.anumber, self.atype,
+        """.format(self.id, self.afrom, self.anumber, self.atype,
             self.argument, self.duration, self.createtime)
 
 
