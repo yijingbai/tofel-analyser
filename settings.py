@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'tofel_analyser',
     'rest_framework',
+    'rest_framework_nested',
 )
 
 MIDDLEWARE_CLASSES = (
