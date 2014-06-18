@@ -1,0 +1,9 @@
+{
+    "folders": [{
+        "follow_symlinks": true,
+        "path": "/Users/yijingbai/Dropbox/project/tofel-analyser"
+    }],
+    "settings": {
+        "python_interpreter_path": "/usr/bin/python"
+    }
+}
