@@ -17,3 +17,5 @@ sys.path.append(os.path.join(BASE_DIR,"../"))
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+

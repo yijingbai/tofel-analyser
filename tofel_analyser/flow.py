@@ -30,7 +30,7 @@ class SummaryFlow(object):
         """
         End reading an article.
         """
-        delete self.startReadingTime[article.id]
+        del self.startReadingTime[article.id]
 
 
 
